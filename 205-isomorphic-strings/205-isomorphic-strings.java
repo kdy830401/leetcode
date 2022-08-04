@@ -8,26 +8,22 @@ class Solution {
             return false;
         }
         
-        if(s.equals(t)){
-            return true;
-        }
+        Map<Character, Character> map = new HashMap<>();
+        Set<Character> tSet = new HashSet<>();
         
-        char[] cs = new char[s.length()];
-        char[] ct = new char[t.length()];
-        
-        boolean result = true;
         for(int i = 0; i < s.length(); i++){
-            cs[i] = s.charAt(i);
-            ct[i] = t.charAt(i);
-
-            for(int j = 0; j < i; j++){
-                if(cs[i] == cs[j] && ct[i] != ct[j]){
-                    result = false;
-                } else if(cs[i] != cs[j] && ct[i] == ct[j]){
-                    result = false;
-                }
+           
+            if(map.containsKey(s.charAt(i)) && map.get(s.charAt(i)) != t.charAt(i)){
+                return false;
             }
+            if(!map.containsKey(s.charAt(i)) && tSet.contains(t.charAt(i))){
+                return false;
+            }
+            map.put(s.charAt(i), t.charAt(i));
+            tSet.add(t.charAt(i));
+            
+            
         }
-        return result;
+        return true;
     }
 }
