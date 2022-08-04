@@ -1,6 +1,6 @@
 class Solution {
     public int pivotIndex(int[] nums) {
-        int pivotIndex = -1;
+   
         
         for(int i = 0; i < nums.length; i++){
             int rightSum = 0;
@@ -15,14 +15,12 @@ class Solution {
             }
             
             if(i == 0 && rightSum == 0){
-                pivotIndex = 0;
-                return pivotIndex;
+                return 0;
             } else if(rightSum == leftSum){
-                pivotIndex = i;
-              return pivotIndex;
+              return i;
             }
         }
-        return pivotIndex;
+        return -1;
          
     }
 }
